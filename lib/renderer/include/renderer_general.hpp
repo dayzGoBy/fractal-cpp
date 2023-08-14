@@ -1,6 +1,7 @@
 #ifndef RENDERER_GENERAL_HPP
 #define RENDERER_GENERAL_HPP
 #include <utility>
+#include <vector>
 
 namespace rr {
     struct RGBA {
@@ -12,6 +13,7 @@ namespace rr {
 
     using Cart = std::pair<double, double>;
     using Shape = std::pair<unsigned, unsigned>;
+    using Buffer = std::vector<unsigned char>;
 }
 
 #endif
