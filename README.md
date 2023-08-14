@@ -1,1 +1,1 @@
-# lyapunov-fractal
+![3.81 -> 3.87](output/test.png)

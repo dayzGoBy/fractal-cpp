@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.14)
 
-project(Int128 LANGUAGES CXX)
+project(Fractals LANGUAGES CXX)
 
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_BINARY_DIR})
 list(APPEND CMAKE_PREFIX_PATH ${CMAKE_BINARY_DIR})
@@ -50,4 +50,4 @@ endif()
 add_subdirectory(lib)
 
 add_executable(main src/main.cpp)
-target_link_libraries(main PRIVATE drawer fractal)
+target_link_libraries(main PRIVATE renderer fractal)

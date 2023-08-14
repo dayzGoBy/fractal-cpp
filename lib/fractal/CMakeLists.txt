@@ -1,10 +1,10 @@
-project(fractal)
+project(Fractals)
 
 add_library(fractal
         include/fractal.hpp src/fractal.cpp
         )
 
-target_include_directories(${PROJECT_NAME} PUBLIC include)
+target_include_directories(fractal PUBLIC include)
 
 enable_testing()
 
