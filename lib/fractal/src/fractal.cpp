@@ -36,3 +36,16 @@ std::complex<double> ftl::newton_method(double x, double y,
 
     return zn;
 }
+
+unsigned ftl::quadratic_julia_set(std::complex<double> z0, std::complex<double> c, unsigned int N) {
+    const double R = (1 + std::sqrt(1 + 4 * std::abs(c))) / 2;
+
+    for (unsigned cnt = 0; cnt < N; cnt++) {
+        if (std::abs(z0) > R) {
+            return cnt + 1;
+        }
+        z0 = z0 * z0 + c;
+    }
+
+    return N;
+}

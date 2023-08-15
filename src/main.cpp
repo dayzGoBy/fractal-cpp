@@ -6,8 +6,32 @@ int main(int argc, char **argv) {
     if (argc != 2) {
         std::cerr << "the only arg is filename" << std::endl;
     }
-    rr::Shape shape = {3000, 3000};
+    rr::Shape shape = {2000, 2000};
     /*std::vector<unsigned char> image =
+            rr::compute_pixels(
+                    {2, 4}, {2, 4}, shape,
+                    [](double x, double y) {
+                        return rr::color_mappers::classic(
+                                ftl::lyapunov_exponent(x, y,
+                                                       "ABBABAABBAABABBABAABBBABBBAA",
+                                                       1e3));
+                    });*/
+
+    unsigned N = 1e4;
+    std::vector<unsigned char> image =
+            rr::compute_pixels(
+                    {-1.35, 1.35}, {-1.35, 1.35}, shape,
+                    [&N](double x, double y) {
+                        return rr::color_mappers::julia_unsigned_light(
+                                ftl::quadratic_julia_set({x, y}, {0.4, -0.22}, N),
+                                N
+                        );
+                    }
+            );
+    rr::save(argv[1], image, shape);
+}
+
+/*std::vector<unsigned char> image =
             rr::compute_pixels(
                     {0, 4}, {0, 4}, shape,
                     [](double x, double y) {
@@ -31,11 +55,3 @@ int main(int argc, char **argv) {
                         );
                     }
             );*/
-    std::vector<unsigned char> image =
-            rr::compute_pixels(
-                    {2, 4}, {2, 4}, shape,
-                    [](double x, double y){
-                        return rr::color_mappers::classic(ftl::lyapunov_exponent(x, y, "ABBABAAB", 5e3));
-                    });
-    rr::save(argv[1], image, shape);
-}

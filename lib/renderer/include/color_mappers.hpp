@@ -17,6 +17,7 @@ namespace rr::color_mappers {
                     {0, 137, 215, 255}
             }
     };
+    constexpr RGBA BLACK = {0, 0, 0, 255};
 
     inline unsigned char convert(double x) {
         return (x > 255) ? 255u : (x < 0) ? 0 : static_cast<unsigned char>(x);
@@ -29,6 +30,14 @@ namespace rr::color_mappers {
     rr::RGBA classic(double val);
 
     rr::RGBA newton(std::complex<double> val, std::vector<std::complex<double>> &&roots);
+
+    rr::RGBA julia_bool(unsigned val);
+
+    rr::RGBA julia_unsigned_green(unsigned val, unsigned nmax);
+
+    rr::RGBA julia_unsigned_violet(unsigned val, unsigned nmax);
+
+    rr::RGBA julia_unsigned_light(unsigned val, unsigned nmax);
 }
 
 #endif

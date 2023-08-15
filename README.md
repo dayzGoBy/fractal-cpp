@@ -1,7 +1,15 @@
-### "AB" {3.81, 3.87}
+### "AB" {3.841, 3.865}
 
-![](output/jpg2500.jpg)
+![](output/ab2500.png)
+
+### Julia set (colored by amount of iterations to escape) with c = 0.4 - 0.22i
+
+![](output/julia_light.png)
 
 ### "ABBABAAB" {2, 4}
 
 ![](output/different_seq2500.jpg)
+
+### Julia set with c = -0.13 + 0.89i
+
+![](output/julia-013_089.png)
