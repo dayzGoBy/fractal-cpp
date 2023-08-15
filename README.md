@@ -1,1 +1,1 @@
-![3.81 -> 3.87](output/test.png)
+![3.81 -> 3.87](output/jpg2500.jpg)
