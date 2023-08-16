@@ -1080,7 +1080,7 @@ Save a file from buffer to disk. Warning, if it exists, this function overwrites
 the file without warning!
 buffer: the buffer to write
 buffersize: size of the buffer to write
-filename: the path to the file to save to
+filename: the path to the file to save_png to
 return value: error code (0 means ok)
 
 NOTE: Wide-character filenames are not supported, you can use an external method
@@ -1583,7 +1583,7 @@ Supported color conversions:
 -higher to smaller bitdepth, and vice versa
 
 If you want no color conversion to be done (e.g. for speed or control):
--In the encoder, you can make it save a PNG with any color type by giving the
+-In the encoder, you can make it save_png a PNG with any color type by giving the
 raw color mode and LodePNGInfo the same color mode, and setting auto_convert to
 false.
 -In the decoder, you can make it store the pixel data in the same color type

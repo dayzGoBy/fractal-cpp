@@ -31,7 +31,9 @@ namespace rr::color_mappers {
 
     rr::RGBA newton(std::complex<double> val, std::vector<std::complex<double>> &&roots);
 
-    rr::RGBA julia_bool(unsigned val);
+    rr::RGBA julia_bool(unsigned val, unsigned nmax);
+
+    rr::RGBA julia_unsigned_two(unsigned val, unsigned nmax);
 
     rr::RGBA julia_unsigned_green(unsigned val, unsigned nmax);
 

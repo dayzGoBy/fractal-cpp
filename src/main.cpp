@@ -6,7 +6,7 @@ int main(int argc, char **argv) {
     if (argc != 2) {
         std::cerr << "the only arg is filename" << std::endl;
     }
-    rr::Shape shape = {2000, 2000};
+    rr::Shape shape = {800, 800};
     /*std::vector<unsigned char> image =
             rr::compute_pixels(
                     {2, 4}, {2, 4}, shape,
@@ -17,18 +17,34 @@ int main(int argc, char **argv) {
                                                        1e3));
                     });*/
 
-    unsigned N = 1e4;
-    std::vector<unsigned char> image =
+    unsigned N = 1e3;
+    /*std::vector<unsigned char> image =
             rr::compute_pixels(
                     {-1.35, 1.35}, {-1.35, 1.35}, shape,
                     [&N](double x, double y) {
-                        return rr::color_mappers::julia_unsigned_light(
-                                ftl::quadratic_julia_set({x, y}, {0.4, -0.22}, N),
+                        return rr::color_mappers::julia_unsigned_two(
+                                ftl::quadratic_julia_set({x, y}, {-0.13, 0.89}, N),
                                 N
                         );
                     }
             );
-    rr::save(argv[1], image, shape);
+    rr::save_png(argv[1], image, shape);*/
+
+    unsigned frames = 50;
+    rr::save_gif(argv[1],
+                 [&](unsigned frame) {
+                     auto x = std::pow((double) frame / frames, 2);
+                     rr::Cart lim = {-0.75 + 0.7499 * x, 0.75 - 0.7499 * x};
+                     return rr::compute_pixels(
+                             lim, lim, shape,
+                             [&N, &frame](double x, double y) {
+                                 return rr::color_mappers::julia_unsigned_light(
+                                         ftl::quadratic_julia_set({x, y}, {- 0.74543, 0.11301}, frame + N),
+                                         N + frame
+                                 );
+                             }
+                     );
+                 }, shape, frames, 10);
 }
 
 /*std::vector<unsigned char> image =

@@ -5,6 +5,7 @@ add_library(renderer
         include/lodepng.h src/lodepng.cpp
         include/color_mappers.hpp src/color_mappers.cpp
         include/renderer_general.hpp src/renderer_general.cpp
+        include/gif.h src/gif.cpp
         )
 
 target_include_directories(renderer PUBLIC include)

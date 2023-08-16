@@ -34,7 +34,11 @@ namespace rr::color_mappers {
     }
 
     rr::RGBA julia_bool(unsigned val, unsigned nmax) {
-        return val == nmax < 1e-14 ? RGBA(56, 255, 181, 255) : RGBA(139, 13, 255, 255);
+        return val == nmax ? RGBA(56, 255, 181, 255) : RGBA(139, 13, 255, 255);
+    }
+
+    rr::RGBA julia_unsigned_two(unsigned val, unsigned nmax) {
+        return to_RGBA(255.0 * val / nmax, 233.0 * val / nmax, 30 + 220.0 * val / nmax, 255);
     }
 
     rr::RGBA julia_unsigned_green(unsigned val, unsigned nmax) {

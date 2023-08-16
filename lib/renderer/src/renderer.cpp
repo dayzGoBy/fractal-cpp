@@ -1,7 +1,7 @@
 #include "renderer.hpp"
 
 namespace rr {
-    void save(std::string name, std::vector<unsigned char> &from, rr::Shape shape) {
+    void save_png(std::string name, std::vector<unsigned char> &from, Shape shape) {
         unsigned error = lodepng::encode(name, from, shape.first, shape.second);
 
         if (error) {
@@ -20,14 +20,13 @@ namespace rr {
 
         std::vector<std::thread> threads(nthreads);
         {
-            unsigned for_one = shape.second / nthreads;
             for (unsigned thr = 0; thr < nthreads; thr++) {
                 threads[thr] = std::thread(
-                        [&](size_t number) {
-                            auto y = ylim.first + number * for_one * ystep;
-                            for (unsigned yc = number * for_one; yc < (number + 1) * for_one; yc++) {
+                        [&](unsigned number) {
+                            auto y = ylim.first + number * ystep;
+                            for (unsigned yc = number; yc < shape.second - nthreads + number + 1; yc += nthreads) {
                                 auto x = xlim.first;
-                                for (unsigned xc = 0; xc < shape.second; xc++) {
+                                for (unsigned xc = 0; xc < shape.first; xc++) {
                                     auto rgba = f(x, y);
                                     size_t index = ((shape.second - yc - 1) * shape.first + xc) * 4;
                                     res[index] = rgba.R;
@@ -36,7 +35,7 @@ namespace rr {
                                     res[index + 3] = rgba.A;
                                     x += xstep;
                                 }
-                                y += ystep;
+                                y += ystep * nthreads;
                             }
                         },
                         thr);
@@ -45,5 +44,18 @@ namespace rr {
         }
 
         return res;
+    }
+
+    void save_gif(std::string name, std::function<std::vector<unsigned char>(unsigned int)>&& animate, Shape shape,
+                  unsigned frames, unsigned int delay) {
+        GifWriter writer;
+
+        GifBegin(&writer, name.c_str(), shape.first, shape.second, delay);
+
+        for (unsigned frame = 0; frame < frames; frame++) {
+            GifWriteFrame(&writer, animate(frame).data(), shape.first, shape.second, delay);
+        }
+
+        GifEnd(&writer);
     }
 }
