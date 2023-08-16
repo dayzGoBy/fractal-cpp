@@ -1,21 +1,19 @@
-### "AB" {3.841, 3.865}
-
-![](output/ab2500.png)
-
 ### Julia set (colored by amount of iterations to escape) with c = 0.4 - 0.22i
 
 ![](output/julia_light.png)
 
-### "ABBABAAB" {2, 4}
-
-![](output/different_seq2500.jpg)
+### Lyapunov fractal with S = "AB" {3.841, 3.865}
 
 ### Julia set with c = -0.13 + 0.89i
 
 ![](output/cool_julia.png)
 
+![](output/ab2500.png)
+
+### Lyapunov fractal with S = "ABBABAAB" {2, 4}
+
+![](output/different_seq2500.jpg)
+
 ### Some zooms
 
-![](output/violet_zoom.gif)
-
-![](output/light_zoom2.gif)
+<img src="output/violet_cropped.gif" width="540" height="540" alt=""/> <img src="output/light_cropped.gif" width="540" height="540" alt=""/>
