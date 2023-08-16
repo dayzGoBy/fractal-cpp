@@ -12,4 +12,10 @@
 
 ### Julia set with c = -0.13 + 0.89i
 
-![](output/julia-013_089.png)
+![](output/cool_julia.png)
+
+### Some zooms
+
+![](output/violet_zoom.gif)
+
+![](output/light_zoom2.gif)
