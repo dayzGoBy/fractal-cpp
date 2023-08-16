@@ -4,11 +4,11 @@
 
 ### Lyapunov fractal with S = "AB" {3.841, 3.865}
 
+![](output/ab2500.png)
+
 ### Julia set with c = -0.13 + 0.89i
 
 ![](output/cool_julia.png)
-
-![](output/ab2500.png)
 
 ### Lyapunov fractal with S = "ABBABAAB" {2, 4}
 
